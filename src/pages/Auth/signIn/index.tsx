@@ -52,6 +52,7 @@ export default function SignIn() {
         </Divider>
         <Box component='form' onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1 }}>
           <TextField
+            {...register("email")}
             margin='dense'
             required
             fullWidth
@@ -61,9 +62,9 @@ export default function SignIn() {
             autoComplete='email'
             error={!!errors.email}
             helperText={errors.email?.message}
-            {...register("email")}
           />
           <TextField
+            {...register("password")}
             margin='dense'
             required
             fullWidth
@@ -74,7 +75,6 @@ export default function SignIn() {
             autoComplete='current-password'
             error={!!errors.password}
             helperText={errors.password?.message}
-            {...register("password")}
           />
           <Stack direction='row' spacing={2} mt={2}>
             <Button onClick={() => navigate(-1)} fullWidth variant='contained'>

@@ -72,6 +72,7 @@ export default function SignUp() {
           sx={{ mt: 1 }}
         >
           <TextField
+            {...register("name")}
             margin='dense'
             required
             fullWidth
@@ -83,7 +84,6 @@ export default function SignUp() {
             inputProps={{
               "aria-describedby": "insira seu nome",
             }}
-            {...register("name")}
           />
           <Stack direction='row' alignItems='flex-start' spacing={2}>
             <Controller
@@ -146,11 +146,12 @@ export default function SignUp() {
             />
           </Stack>
           <TextField
+            {...register("email")}
             margin='dense'
             required
             fullWidth
             id='email'
-            label='Email'
+            label='E-mail'
             variant='outlined'
             autoComplete='email'
             error={!!errors.email}
@@ -158,13 +159,13 @@ export default function SignUp() {
             inputProps={{
               "aria-describedby": "insira o seu email",
             }}
-            {...register("email")}
           />
           <TextField
+            {...register("password")}
             margin='dense'
             required
             fullWidth
-            label='Senha'
+            label='Crie sua senha'
             type='password'
             variant='outlined'
             autoComplete='current-password'
@@ -173,13 +174,13 @@ export default function SignUp() {
             inputProps={{
               "aria-describedby": "insira uma senha para o seu cadastro",
             }}
-            {...register("password")}
           />
           <TextField
+            {...register("confirmPassword")}
             margin='dense'
             required
             fullWidth
-            label='Confirme a senha'
+            label='Confirme sua senha'
             type='password'
             variant='outlined'
             error={!!errors.confirmPassword}
@@ -187,7 +188,6 @@ export default function SignUp() {
             inputProps={{
               "aria-describedby": "insira a senha novamente",
             }}
-            {...register("confirmPassword")}
           />
           <FormControlLabel
             control={
