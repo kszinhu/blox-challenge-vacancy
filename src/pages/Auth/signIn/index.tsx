@@ -7,7 +7,7 @@ import {
   Typography,
   TextField,
 } from "@mui/material";
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { signInSchema } from "../../../configs/schemas/authSchema";
 import { useNavigate } from "react-router-dom";
@@ -28,8 +28,8 @@ export default function SignIn() {
     mode: "onBlur",
   });
 
-  const onSubmit = (data: LoginFormData) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<LoginFormData> = (values) => {
+    console.log(values);
   };
 
   return (
@@ -52,7 +52,7 @@ export default function SignIn() {
         </Divider>
         <Box component='form' onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1 }}>
           <TextField
-            margin='normal'
+            margin='dense'
             required
             fullWidth
             id='email'
@@ -64,7 +64,7 @@ export default function SignIn() {
             {...register("email")}
           />
           <TextField
-            margin='normal'
+            margin='dense'
             required
             fullWidth
             label='Password'

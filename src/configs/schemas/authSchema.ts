@@ -12,6 +12,7 @@ const signUpSchema = object().shape({
     .required("CPF obrigatório")
     .test("invalid-cpf", "CPF inválido", (value) => isValidCPF(value!)),
   birthDate: date()
+    .nullable() // handle initial value
     .required("Data de nascimento obrigatória")
     .test(
       "invalid-date",
