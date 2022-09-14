@@ -1,3 +1,93 @@
+import {
+  Divider,
+  Box,
+  Button,
+  Container,
+  Stack,
+  Typography,
+  TextField,
+} from "@mui/material";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { signInSchema } from "../../../configs/schemas/authSchema";
+import { useNavigate } from "react-router-dom";
+
+type LoginFormData = {
+  email: string;
+  password: string;
+};
+
 export default function SignIn() {
-  return null;
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormData>({
+    resolver: yupResolver(signInSchema),
+    mode: "onBlur",
+  });
+
+  const onSubmit = (data: LoginFormData) => {
+    console.log(data);
+  };
+
+  return (
+    <Container component='main' maxWidth='xs'>
+      <Box
+        sx={{
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Typography component='h1' variant='h4' sx={{ fontWeight: "bold" }}>
+          Seja bem-vindo!
+        </Typography>
+        <Divider sx={{ width: "100%", my: 2 }}>
+          <Typography component='h2' variant='h6'>
+            Painel de Acesso
+          </Typography>
+        </Divider>
+        <Box component='form' onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1 }}>
+          <TextField
+            margin='normal'
+            required
+            fullWidth
+            id='email'
+            label='Email Address'
+            variant='outlined'
+            autoComplete='email'
+            {...register("email")}
+          />
+          <Typography color='error' variant='caption'>
+            {errors.email?.message}
+          </Typography>
+          <TextField
+            margin='normal'
+            required
+            fullWidth
+            label='Password'
+            type='password'
+            id='password'
+            variant='outlined'
+            autoComplete='current-password'
+            {...register("password")}
+          />
+          <Typography color='error' variant='caption'>
+            {errors.password?.message}
+          </Typography>
+          <Stack direction='row' spacing={2} mt={2}>
+            <Button onClick={() => navigate(-1)} fullWidth variant='contained'>
+              Voltar
+            </Button>
+            <Button type='submit' fullWidth variant='contained'>
+              Acessar
+            </Button>
+          </Stack>
+        </Box>
+      </Box>
+    </Container>
+  );
 }
