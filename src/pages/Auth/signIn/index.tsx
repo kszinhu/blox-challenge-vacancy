@@ -59,11 +59,10 @@ export default function SignIn() {
             label='Email Address'
             variant='outlined'
             autoComplete='email'
+            error={!!errors.email}
+            helperText={errors.email?.message}
             {...register("email")}
           />
-          <Typography color='error' variant='caption'>
-            {errors.email?.message}
-          </Typography>
           <TextField
             margin='normal'
             required
@@ -73,11 +72,10 @@ export default function SignIn() {
             id='password'
             variant='outlined'
             autoComplete='current-password'
+            error={!!errors.password}
+            helperText={errors.password?.message}
             {...register("password")}
           />
-          <Typography color='error' variant='caption'>
-            {errors.password?.message}
-          </Typography>
           <Stack direction='row' spacing={2} mt={2}>
             <Button onClick={() => navigate(-1)} fullWidth variant='contained'>
               Voltar
