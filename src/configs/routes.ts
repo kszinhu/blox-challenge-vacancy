@@ -11,26 +11,30 @@ interface ObjectRoute {
 
 export const routes: ObjectRoute[] = [
   {
-    path: "/",
+    path: "/sign-up",
     key: "SIGN_UP",
     title: "Registre-se",
-    exact: true,
     component: pages.Register,
   },
   {
     path: "/sign-in",
     key: "SIGN_IN",
     title: "Entre na sua conta",
-    exact: true,
     component: pages.Login,
   },
   {
     path: "/curricular-units",
     key: "LIST_CURRICULAR",
     title: "Lista curricular",
-    exact: true,
     restrict: true,
     component: pages.ListCurricular,
+  },
+  {
+    // route to handler root, and use flow (redirect to login or list curricular)
+    path: "/",
+    key: "ROOT",
+    title: "Registre-se",
+    component: pages.Register,
   },
   {
     path: "*",
