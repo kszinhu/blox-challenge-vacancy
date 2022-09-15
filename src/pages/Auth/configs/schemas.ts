@@ -25,7 +25,7 @@ const signUpSchema = object().shape({
     .min(8, "Senha muito curta")
     .required("Senha obrigatória")
     .test(
-      "passwords-requisites",
+      "password-requisites",
       "Senha deve conter pelo menos uma letra maiúscula, uma minúscula e um digito",
       (value) => {
         const hasUpperCase = /[A-Z]/.test(value!);
