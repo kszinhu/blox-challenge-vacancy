@@ -1,7 +1,11 @@
 import { createContext, useContext, useReducer, useMemo } from "react";
 
 export type Dispatch = (action: Action) => void;
-export type State = { user: any; loggedIn: boolean };
+export type State = {
+  user: { expiresAt: string; userId: number } | null;
+  loggedIn: boolean;
+  error: string | null;
+};
 type Action =
   | { type: "LOGIN_SUCCESS"; payload: any }
   | { type: "REGISTER_SUCCESS"; payload: any }
@@ -20,18 +24,24 @@ function authReducer(state: State, action: Action) {
     case "LOGIN_SUCCESS":
       return {
         ...state,
-        user: action.payload,
+        user: {
+          expiresAt: action.payload.expires_at,
+          userId: action.payload.user_id,
+        },
         loggedIn: true,
+        error: null,
       };
     case "LOGOUT":
       return {
         ...state,
         user: null,
         loggedIn: false,
+        error: null,
       };
     case "REGISTER_SUCCESS":
       return {
         ...state,
+        error: null,
       };
 
     case "ERROR":
@@ -44,8 +54,9 @@ function authReducer(state: State, action: Action) {
 
 function AuthProvider({ children }: AuthProviderProps) {
   const [state, dispatch] = useReducer(authReducer, {
-    user: null,
     loggedIn: false,
+    user: null,
+    error: null,
   });
 
   const value = useMemo(() => ({ state, dispatch }), [state]);

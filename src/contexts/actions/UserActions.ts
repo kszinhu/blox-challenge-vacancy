@@ -1,7 +1,8 @@
-import { APIService, RegisterData, LoginData } from "../../services/Api";
 import { Dispatch } from "../AuthContext";
+import { RegisterFormData, LoginFormData } from "../../pages/Auth/configs/types";
+import { APIService } from "../../services/api";
 
-type UserData = {
+interface UserData {
   id: number;
   provider: string;
   uid: string;
@@ -12,7 +13,7 @@ type UserData = {
   picture_data: string | null;
   name: string;
   username: string;
-  external_data: {} | null;
+  external_data: object | null;
   status: string;
   shortbio: string | null;
   lattes_curriculum: string | null;
@@ -28,26 +29,30 @@ type UserData = {
   allow_emails: boolean;
   ecommerce_user: boolean;
   allow_password_change: boolean;
-};
+}
 
 type RegisterResponse = {
   status: string;
   data: UserData;
 };
 
-type LoginResponse = {
+interface LoginResponse {
   status: string;
   data: {
     access_token: string;
     refresh_token: string;
   };
-};
+}
 
-async function signUp(dispatch: Dispatch, data: RegisterData) {
+async function signUp(dispatch: Dispatch, data: RegisterFormData) {
   try {
-    const response = (await APIService.register(
-      data
-    )) as unknown as RegisterResponse;
+    const response = await APIService.register({
+      ...data,
+      cpf: data.cpf.replace(/[^\d]/g, ""),
+      username: data.email.split("@")[0],
+      institution_id: 22,
+      confirm_success_url: window.location.href,
+    });
 
     if (response?.status === "success") {
       dispatch({
@@ -68,19 +73,20 @@ async function signUp(dispatch: Dispatch, data: RegisterData) {
   }
 }
 
-async function signIn(dispatch: Dispatch, data: LoginData) {
+async function signIn(dispatch: Dispatch, credentials: LoginFormData) {
   try {
-    const response = (await APIService.login(data)) as unknown as LoginResponse;
+    const data = await APIService.login({ ...credentials, institution_id: 22 });
 
-    if (response?.status === "success") {
-      dispatch({
-        type: "LOGIN_SUCCESS",
-        payload: response.data,
-      });
-    } else {
+    if ("error" in data) {
       dispatch({
         type: "ERROR",
-        payload: response.data,
+        payload: data.error!,
+      });
+    } else {
+      localStorage.setItem("access_token", data.token);
+      dispatch({
+        type: "LOGIN_SUCCESS",
+        payload: data,
       });
     }
   } catch (error) {

@@ -9,31 +9,48 @@ import {
 } from "@mui/material";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { signInSchema } from "../../../configs/schemas/authSchema";
-import { useNavigate } from "react-router-dom";
+import { LoginFormData } from "../configs/types";
+import { signInSchema } from "../configs/schemas";
 
-type LoginFormData = {
-  email: string;
-  password: string;
-};
+import { useSnackbar } from "notistack";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../contexts/AuthContext";
+import { signIn } from "../../../contexts/actions/UserActions";
 
 export default function SignIn() {
-  const navigate = useNavigate();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginFormData>({
-    resolver: yupResolver(signInSchema),
-    mode: "onBlur",
-  });
+  const navigate = useNavigate(),
+    { dispatch } = useAuth()!,
+    { enqueueSnackbar } = useSnackbar(),
+    {
+      register,
+      handleSubmit,
+      formState: { errors },
+    } = useForm<LoginFormData>({
+      resolver: yupResolver(signInSchema),
+      mode: "onBlur",
+    });
 
   const onSubmit: SubmitHandler<LoginFormData> = (values) => {
-    console.log(values);
+    signIn(dispatch, values);
+    if (localStorage.getItem("access_token")) {
+      enqueueSnackbar("Login realizado com sucesso!", {
+        variant: "success",
+        autoHideDuration: 2000,
+      });
+
+      setTimeout(() => {
+        navigate("/curricular-units");
+      }, 1500);
+    } else {
+      enqueueSnackbar("Erro ao realizar login!", {
+        variant: "error",
+        autoHideDuration: 2000,
+      });
+    }
   };
 
   return (
-    <Container component='main' maxWidth='xs'>
+    <Container component='main' maxWidth='sm'>
       <Box
         sx={{
           marginTop: 8,
@@ -50,18 +67,18 @@ export default function SignIn() {
             Painel de Acesso
           </Typography>
         </Divider>
-        <Box component='form' onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1 }}>
+        <Box component='form' noValidate onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1 }}>
           <TextField
-            {...register("email")}
+            {...register("username")}
             margin='dense'
             required
             fullWidth
-            id='email'
-            label='Email Address'
+            id='username'
+            label='Nome de usuário'
             variant='outlined'
-            autoComplete='email'
-            error={!!errors.email}
-            helperText={errors.email?.message}
+            autoComplete='username'
+            error={!!errors.username}
+            helperText={errors.username?.message}
           />
           <TextField
             {...register("password")}

@@ -25,7 +25,7 @@ export const routes: ObjectRoute[] = [
     component: pages.Login,
   },
   {
-    path: "/list-curricular",
+    path: "/curricular-units",
     key: "LIST_CURRICULAR",
     title: "Lista curricular",
     exact: true,

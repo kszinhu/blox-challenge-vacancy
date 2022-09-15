@@ -1,8 +1,8 @@
-import { isValidCPF } from "./../../utils/validateCPF";
+import { isValidCPF } from "../../../utils/validateCPF";
 import { object, string, date, ref, boolean } from "yup";
 
 const signInSchema = object().shape({
-  email: string().email("E-mail inválido").required("E-mail obrigatório"),
+  username: string().required("Campo obrigatório"),
   password: string().required("Senha obrigatória"),
 });
 
@@ -11,7 +11,7 @@ const signUpSchema = object().shape({
   cpf: string()
     .required("CPF obrigatório")
     .test("invalid-cpf", "CPF inválido", (value) => isValidCPF(value!)),
-  birthDate: date()
+  birth_date: date()
     .nullable() // handle initial value
     .required("Data de nascimento obrigatória")
     .test(
@@ -21,12 +21,25 @@ const signUpSchema = object().shape({
       // Date of birth cannot be greater than the current date
     ),
   email: string().email("E-mail inválido").required("E-mail obrigatório"),
-  password: string().required("Senha obrigatória"),
-  confirmPassword: string().oneOf(
+  password: string()
+    .min(8, "Senha muito curta")
+    .required("Senha obrigatória")
+    .test(
+      "passwords-requisites",
+      "Senha deve conter pelo menos uma letra maiúscula, uma minúscula e um digito",
+      (value) => {
+        const hasUpperCase = /[A-Z]/.test(value!);
+        const hasLowerCase = /[a-z]/.test(value!);
+        const hasNumber = /\d/.test(value!);
+
+        return hasUpperCase && hasLowerCase && hasNumber;
+      }
+    ),
+  password_confirmation: string().oneOf(
     [ref("password"), null],
     "Senhas não coincidem"
   ),
-  allowEmails: boolean(),
+  allow_emails: boolean(),
 });
 
 export { signInSchema, signUpSchema };

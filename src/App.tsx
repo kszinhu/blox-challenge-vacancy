@@ -1,15 +1,18 @@
 import ApplicationRouter from "./components/Router";
 import { AuthProvider } from "./contexts/AuthContext";
 import { CssBaseline, ThemeProvider } from "@mui/material";
+import { SnackbarProvider } from "notistack";
 import { applicationTheme } from "./configs/theme";
 
 export default function App() {
   return (
     <AuthProvider>
-      <CssBaseline />
-      <ThemeProvider theme={applicationTheme}>
-        <ApplicationRouter />
-      </ThemeProvider>
+      <SnackbarProvider maxSnack={2}>
+        <CssBaseline />
+        <ThemeProvider theme={applicationTheme}>
+          <ApplicationRouter />
+        </ThemeProvider>
+      </SnackbarProvider>
     </AuthProvider>
   );
 }

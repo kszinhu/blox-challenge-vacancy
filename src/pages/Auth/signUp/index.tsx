@@ -16,40 +16,54 @@ import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { signUpSchema } from "../../../configs/schemas/authSchema";
+import { RegisterFormData } from "../configs/types";
+import { signUpSchema } from "../configs/schemas";
 
-type RegisterFormData = {
-  name: string;
-  email: string;
-  cpf: string; // using mask returns a string instead of a number (e.g. "123.456.789-00")
-  password: string;
-  confirmPassword: string;
-  allowEmails: boolean;
-  birthDate: Date | null;
-};
+import { useSnackbar } from "notistack";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../contexts/AuthContext";
+import { signUp } from "../../../contexts/actions/UserActions";
 
 export default function SignUp() {
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm({
-    defaultValues: {
-      name: undefined,
-      email: undefined,
-      cpf: undefined,
-      password: undefined,
-      confirmPassword: undefined,
-      allowEmails: false,
-      birthDate: null,
-    },
-    resolver: yupResolver(signUpSchema),
-    mode: "onChange",
-  });
+  const { state, dispatch } = useAuth()!,
+    navigate = useNavigate(),
+    { enqueueSnackbar } = useSnackbar(),
+    {
+      register,
+      handleSubmit,
+      control,
+      formState: { errors },
+    } = useForm({
+      defaultValues: {
+        name: "",
+        email: "",
+        cpf: "",
+        password: "",
+        password_confirmation: "",
+        allow_emails: false,
+        birth_date: null,
+      },
+      resolver: yupResolver(signUpSchema),
+      mode: "onChange",
+    });
 
   const onSubmit: SubmitHandler<RegisterFormData> = (values) => {
-    console.log(values);
+    signUp(dispatch, values);
+    if (state.error) {
+      enqueueSnackbar("Erro ao realizar cadastro!", {
+        variant: "error",
+        autoHideDuration: 2000,
+      });
+    } else {
+      enqueueSnackbar("Cadastro realizado com sucesso!", {
+        variant: "success",
+        autoHideDuration: 2000,
+      });
+
+      setTimeout(() => {
+        navigate("/sign-in");
+      }, 1500);
+    }
   };
 
   return (
@@ -67,8 +81,8 @@ export default function SignUp() {
         </Typography>
         <Box
           component='form'
-          onSubmit={handleSubmit(onSubmit)}
           noValidate
+          onSubmit={handleSubmit(onSubmit)}
           sx={{ mt: 1 }}
         >
           <TextField
@@ -114,7 +128,7 @@ export default function SignUp() {
               )}
             />
             <Controller
-              name='birthDate'
+              name='birth_date'
               control={control}
               render={({ field }: any) => (
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -133,9 +147,9 @@ export default function SignUp() {
                         fullWidth
                         variant='outlined'
                         style={{ marginTop: "8px" }}
-                        error={!!errors.birthDate}
+                        error={!!errors.birth_date}
                         helperText={
-                          errors.birthDate?.message && "Data Inválida"
+                          errors.birth_date?.message && "Data Inválida"
                         }
                         {...params}
                       />
@@ -176,15 +190,15 @@ export default function SignUp() {
             }}
           />
           <TextField
-            {...register("confirmPassword")}
+            {...register("password_confirmation")}
             margin='dense'
             required
             fullWidth
             label='Confirme sua senha'
             type='password'
             variant='outlined'
-            error={!!errors.confirmPassword}
-            helperText={errors.confirmPassword?.message}
+            error={!!errors.password_confirmation}
+            helperText={errors.password_confirmation?.message}
             inputProps={{
               "aria-describedby": "insira a senha novamente",
             }}
@@ -192,7 +206,7 @@ export default function SignUp() {
           <FormControlLabel
             control={
               <Checkbox
-                {...register("allowEmails")}
+                {...register("allow_emails")}
                 inputProps={{ "aria-label": "allow-emails" }}
               />
             }
