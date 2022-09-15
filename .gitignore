@@ -27,3 +27,6 @@ dist-ssr
 # env files - except .env.example
 .env
 .env.!example
+
+# test coverage
+coverage

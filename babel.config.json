@@ -8,7 +8,15 @@
         }
       }
     ],
+    [
+      "babel-preset-vite",
+      {
+        "env": true, // defaults to true
+        "glob": false // defaults to true
+      }
+    ],
     "@babel/preset-react",
     "@babel/preset-typescript"
-  ]
+  ],
+  "plugins": ["babel-plugin-transform-vite-meta-env"]
 }
