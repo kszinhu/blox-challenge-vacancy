@@ -6,5 +6,5 @@ export default function PrivateRoutes() {
     state: { loggedIn },
   } = useAuth()!;
 
-  return loggedIn ? <Outlet /> : <Navigate to='/login' />;
+  return loggedIn ? <Outlet /> : <Navigate to='/sign-in' />;
 }
