@@ -6,6 +6,7 @@ interface ObjectRoute {
   title: string;
   exact?: boolean;
   restrict?: boolean;
+  paginate?: boolean;
   component: React.ComponentType;
 }
 
@@ -27,6 +28,7 @@ export const routes: ObjectRoute[] = [
     key: "LIST_CURRICULAR",
     title: "Lista curricular",
     restrict: true,
+    paginate: true,
     component: pages.ListCurricular,
   },
   {

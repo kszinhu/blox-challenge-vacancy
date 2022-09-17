@@ -30,8 +30,8 @@ export default function SignIn() {
       mode: "onBlur",
     });
 
-  const onSubmit: SubmitHandler<LoginFormData> = (values) => {
-    signIn(dispatch, values);
+  const onSubmit: SubmitHandler<LoginFormData> = async (values) => {
+    await signIn(dispatch, values);
     if (localStorage.getItem("access_token")) {
       enqueueSnackbar("Login realizado com sucesso!", {
         variant: "success",
@@ -40,7 +40,7 @@ export default function SignIn() {
 
       setTimeout(() => {
         navigate("/curricular-units");
-      }, 1500);
+      }, 750);
     } else {
       enqueueSnackbar("Erro ao realizar login!", {
         variant: "error",
@@ -67,7 +67,12 @@ export default function SignIn() {
             Painel de Acesso
           </Typography>
         </Divider>
-        <Box component='form' noValidate onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1 }}>
+        <Box
+          component='form'
+          noValidate
+          onSubmit={handleSubmit(onSubmit)}
+          sx={{ mt: 1 }}
+        >
           <TextField
             {...register("username")}
             margin='dense'

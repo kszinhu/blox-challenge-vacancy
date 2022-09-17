@@ -1,6 +1,12 @@
-import { Dispatch } from "../AuthContext";
-import { RegisterFormData, LoginFormData } from "../../pages/Auth/configs/types";
+import { isAuthenticated } from "../AuthContext";
+import { Dispatch } from "../types";
+import {
+  RegisterFormData,
+  LoginFormData,
+} from "../../pages/Auth/configs/types";
 import { APIService } from "../../services/api";
+
+import { AuthActions } from "../reducers/AuthReducer";
 
 interface UserData {
   id: number;
@@ -44,7 +50,7 @@ interface LoginResponse {
   };
 }
 
-async function signUp(dispatch: Dispatch, data: RegisterFormData) {
+async function signUp(dispatch: Dispatch<AuthActions>, data: RegisterFormData) {
   try {
     const response = await APIService.register({
       ...data,
@@ -73,7 +79,10 @@ async function signUp(dispatch: Dispatch, data: RegisterFormData) {
   }
 }
 
-async function signIn(dispatch: Dispatch, credentials: LoginFormData) {
+async function signIn(
+  dispatch: Dispatch<AuthActions>,
+  credentials: LoginFormData
+) {
   try {
     const data = await APIService.login({ ...credentials, institution_id: 22 });
 
@@ -84,6 +93,8 @@ async function signIn(dispatch: Dispatch, credentials: LoginFormData) {
       });
     } else {
       localStorage.setItem("access_token", data.token);
+      localStorage.setItem("expires_at", data.expires_at);
+
       dispatch({
         type: "LOGIN_SUCCESS",
         payload: data,
@@ -97,19 +108,10 @@ async function signIn(dispatch: Dispatch, credentials: LoginFormData) {
   }
 }
 
-async function logout(dispatch: Dispatch) {
+async function logout(dispatch: Dispatch<AuthActions>) {
   dispatch({
     type: "LOGOUT",
   });
 }
 
-async function getCurricularUnits(institutionId: number) {
-  try {
-    const response = await APIService.getCurricularUnits(institutionId);
-    return response;
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-export { signUp, signIn, logout, getCurricularUnits };
+export { signUp, signIn, logout };

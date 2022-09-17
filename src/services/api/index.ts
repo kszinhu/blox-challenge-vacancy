@@ -34,23 +34,29 @@ export class APIService {
     return await response.json();
   }
 
-  static async getCurricularUnits(
-    institutionId: number,
-    paginationOptions: { page: string; per_page: string }
-  ): Promise<CurricularUnitResponse> {
-    const url = new URL(`${this.#baseUrl}${endpoints.curricularUnits}`);
-    url.search = new URLSearchParams(paginationOptions).toString();
-
-    const response = await fetch(
-      url.toString().replace("{institutionId}", String(institutionId)),
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
+  static async getCurricularUnits({
+    institution_id,
+    ...queryParams
+  }: {
+    institution_id: number;
+    page: string;
+    per: string;
+  }): Promise<CurricularUnitResponse> {
+    const url = new URL(
+      `${this.#baseUrl}${endpoints.curricularUnits}`.replace(
+        "{institutionId}",
+        String(institution_id)
+      )
     );
+    url.search = new URLSearchParams(queryParams).toString();
 
-    return response.json();
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return await response.json();
   }
 }
