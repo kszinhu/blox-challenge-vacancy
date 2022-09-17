@@ -9,13 +9,33 @@ export default function ApplicationRouter() {
     <Router>
       <Routes>
         {applicationRoutes.map(
-          ({ component: Component, path, key, restrict, paginate }) => {
+          ({
+            component: Component,
+            layout: LayoutComponent,
+            layoutProps,
+            path,
+            key,
+            restrict,
+            paginate,
+          }) => {
             if (restrict) {
               if (paginate) {
                 return (
                   <Route key={`paginate-${key}`} element={<PaginateRoutes />}>
                     <Route key={key} path={path} element={<PrivateRoutes />}>
-                      <Route key={key} path={path} element={<Component />} />
+                      <Route
+                        key={key}
+                        path={path}
+                        element={
+                          LayoutComponent ? (
+                            <LayoutComponent {...layoutProps}>
+                              <Component />
+                            </LayoutComponent>
+                          ) : (
+                            <Component />
+                          )
+                        }
+                      />
                     </Route>
                   </Route>
                 );
@@ -23,11 +43,37 @@ export default function ApplicationRouter() {
 
               return (
                 <Route key={key} path={path} element={<PrivateRoutes />}>
-                  <Route key={key} path={path} element={<Component />} />
+                  <Route
+                    key={key}
+                    path={path}
+                    element={
+                      LayoutComponent ? (
+                        <LayoutComponent {...layoutProps}>
+                          <Component />
+                        </LayoutComponent>
+                      ) : (
+                        <Component />
+                      )
+                    }
+                  />
                 </Route>
               );
             } else {
-              return <Route key={key} path={path} element={<Component />} />;
+              return (
+                <Route
+                  key={key}
+                  path={path}
+                  element={
+                    LayoutComponent ? (
+                      <LayoutComponent {...layoutProps}>
+                        <Component />
+                      </LayoutComponent>
+                    ) : (
+                      <Component />
+                    )
+                  }
+                />
+              );
             }
           }
         )}
