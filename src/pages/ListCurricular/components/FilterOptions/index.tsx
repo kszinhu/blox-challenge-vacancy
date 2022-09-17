@@ -28,6 +28,7 @@ export default function FilterOptions({ status }: FilterOptionsProps) {
   const onSubmit: SubmitHandler<Record<string, any>> = (values) => {
     paginateCurricularUnits(dispatch, {
       ...paginationOptions,
+      page: 1, // reset page to 1
       ...values,
     });
   };

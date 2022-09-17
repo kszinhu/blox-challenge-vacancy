@@ -52,9 +52,11 @@ export class APIService {
       )
     );
 
-    // filter out undefined | '' | null values
+    // filter out undefined | '' | null values and remove trim spaces
     const filteredQueryParams = Object.fromEntries(
-      Object.entries(queryParams).filter(([_, value]) => value)
+      Object.entries(queryParams)
+        .filter(([, value]) => value)
+        .map(([key, value]) => [key, value?.toString().trim()])
     );
 
     url.search = new URLSearchParams(filteredQueryParams).toString();
