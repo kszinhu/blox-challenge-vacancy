@@ -7,6 +7,13 @@ import {
   CurricularUnitResponse,
 } from "./types";
 
+interface CurricularUnitOptions {
+  institution_id: number;
+  page: string;
+  per: string;
+  title?: string;
+}
+
 export class APIService {
   static #baseUrl: string = import.meta.env.VITE_AUTH_API_URL;
 
@@ -37,18 +44,20 @@ export class APIService {
   static async getCurricularUnits({
     institution_id,
     ...queryParams
-  }: {
-    institution_id: number;
-    page: string;
-    per: string;
-  }): Promise<CurricularUnitResponse> {
+  }: CurricularUnitOptions): Promise<CurricularUnitResponse> {
     const url = new URL(
       `${this.#baseUrl}${endpoints.curricularUnits}`.replace(
         "{institutionId}",
         String(institution_id)
       )
     );
-    url.search = new URLSearchParams(queryParams).toString();
+
+    // filter out undefined | '' | null values
+    const filteredQueryParams = Object.fromEntries(
+      Object.entries(queryParams).filter(([_, value]) => value)
+    );
+
+    url.search = new URLSearchParams(filteredQueryParams).toString();
 
     const response = await fetch(url, {
       method: "GET",

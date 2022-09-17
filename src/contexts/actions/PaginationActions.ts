@@ -6,18 +6,21 @@ interface PaginationOptions {
   institution_id: number;
   page: number;
   per_page: number;
+  title?: string;
 }
 
 async function getCurricularUnits({
   institution_id,
   page,
   per_page,
+  ...optional
 }: PaginationOptions) {
   try {
     const response = await APIService.getCurricularUnits({
       institution_id,
       page: page.toString(),
       per: per_page.toString(),
+      ...optional,
     });
     return response;
   } catch (error) {
@@ -44,7 +47,7 @@ export async function paginateCurricularUnits(
     });
   } else {
     dispatch({
-      type: "FETCH",
+      type: "FETCHED",
       payload: data,
     });
   }

@@ -1,11 +1,12 @@
 export interface PaginationActions {
-  type: "FETCH" | "CHANGE_OPTIONS" | "ERROR";
+  type: "FETCHED" | "CHANGE_OPTIONS" | "ERROR";
   payload: any;
 }
 
 export interface PaginationState {
   paginationOptions: { institution_id: number; page: number; per_page: number };
   data: any;
+  status: "idle" | "fetched" | "fetching" | "error";
   error: string | null;
 }
 
@@ -13,9 +14,10 @@ export const initialState: PaginationState = {
   paginationOptions: {
     institution_id: 22,
     page: 1,
-    per_page: 81,
+    per_page: 9,
   },
   data: null,
+  status: "idle",
   error: null,
 };
 
@@ -24,21 +26,24 @@ export function PaginationReducer(
   action: PaginationActions
 ) {
   switch (action.type) {
-    case "FETCH":
+    case "FETCHED":
       return {
         ...state,
+        status: "fetched",
         data: action.payload,
       };
 
     case "CHANGE_OPTIONS":
       return {
         ...state,
+        status: "fetching",
         paginationOptions: action.payload,
       };
 
     case "ERROR":
       return {
         ...state,
+        status: "error",
         error: action.payload,
       };
   }
