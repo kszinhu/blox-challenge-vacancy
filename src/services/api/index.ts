@@ -30,15 +30,19 @@ export class APIService {
   }
 
   static async login(credentials: LoginFormData): Promise<LoginResponse> {
-    const response = await fetch(`${this.#baseUrl}${endpoints.login}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(credentials),
-    });
+    try {
+      const response = await fetch(`${this.#baseUrl}${endpoints.login}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(credentials),
+      });
 
-    return await response.json();
+      return await response.json();
+    } catch (error: any) {
+      return error;
+    }
   }
 
   static async getCurricularUnits({

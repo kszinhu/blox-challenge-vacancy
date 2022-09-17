@@ -34,12 +34,6 @@ export interface RegisterData {
   ecommerce_user: boolean;
 }
 
-export interface LoginData {
-  token: string;
-  expires_at: string;
-  user_id: number;
-}
-
 export interface CachedBlox {
   id: number;
   url: string | null;
@@ -183,4 +177,10 @@ export type RegisterResponse = {
   data: RegisterData;
 };
 
-export type LoginResponse = { error: string } | LoginData;
+export interface LoginData {
+  token: string;
+  expires_at: string;
+  user_id: number;
+}
+
+export type LoginResponse = LoginData | { error: string };

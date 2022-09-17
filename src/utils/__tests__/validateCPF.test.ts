@@ -10,4 +10,9 @@ describe("isValidCPF", () => {
     expect(isValidCPF("112.894.490-15")).toBe(true);
     expect(isValidCPF("11289449015")).toBe(true);
   });
+
+  it("should return false when CPF not contains 11 digits", () => {
+    expect(isValidCPF("1128944901")).toBe(false);
+    expect(isValidCPF("")).toBe(false);
+  });
 });

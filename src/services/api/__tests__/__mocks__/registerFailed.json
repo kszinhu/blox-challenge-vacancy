@@ -1,0 +1,42 @@
+{
+	"status": "error",
+  "data": {
+    "id": 112522,
+    "provider": "email",
+    "uid": "user.name1111:[\"student\"]@22",
+    "email": "user.name1111@gmail.com",
+    "created_at": "2022-09-17T19:54:14.719-03:00",
+    "updated_at": "2022-09-17T19:54:14.719-03:00",
+    "institution_id": 22,
+    "picture_data": null,
+    "name": "cassiano",
+    "username": "user.name1111",
+    "external_data": {},
+    "status": "active",
+    "shortbio": null,
+    "lattes_curriculum": null,
+    "linked_in": null,
+    "external_id": null,
+    "token": null,
+    "unit_id": null,
+    "cpf": "23623347086",
+    "rg": null,
+    "phone": null,
+    "birth_date": "1992-12-19T00:00:00.000-02:00",
+    "phone2": null,
+    "allow_emails": false,
+    "ecommerce_user": true,
+    "allow_password_change": true
+  },
+  "errors": {
+		"username": [
+			"já está em uso"
+		],
+		"cpf": [
+			"já está em uso"
+		],
+		"email": [
+			"já está em uso"
+		]
+	}
+}

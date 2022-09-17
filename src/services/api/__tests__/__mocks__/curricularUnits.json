@@ -1,0 +1,230 @@
+[
+  {
+    "id": 16108,
+    "location": "Comercial Ensino Superior",
+    "schedules": [],
+    "price": "150.0",
+    "title": "Marketing para Farmacêuticas",
+    "modality": "Presencial",
+    "hours_points": 139.0,
+    "language": null,
+    "language_flag_url": null,
+    "cached_blox": {
+      "id": 5234,
+      "url": null,
+      "code": 547,
+      "hours": 139.0,
+      "pages": null,
+      "title": "Marketing para Farmacêuticas",
+      "total": null,
+      "legacy": false,
+      "status": "accepted",
+      "tracks": [],
+      "credits": 2.0,
+      "program": null,
+      "modality": "Presencial",
+      "subtitle": "",
+      "video_url": "",
+      "created_at": "2019-12-17T22:05:04.084-02:00",
+      "objectives": "{\"blocks\":[{\"key\":\"dek2k\",\"text\":\"Capacitar a los participantes para desempeñar con éxito la función de mercadotecnia en la industria farmacéutica con operaciones en México.\\n\\nBeneficios\\nEl participante obtendrá las bases necesarias para desarrollar estrategias, tácticas y planes de acción mejor enfocados, más rentables y de mayor alcance comercial en su tarea de satisfacer las necesidades del mercado farmacéutico a través de, por lo menos, cinco elementos que podrá adquirir en este diplomado:\\n\\n1) Un claro entendimiento de las tendencias y retos del mercado farmacéutico, sus retos y oportunidades.\\n\\n2) El conocimiento del papel que desempeñan los principales actores del ámbito farmacéutico nacional y su interacción en las diferentes etapas del proceso comercial correspondiente.\\n\\n3) Un manejo efectivo de las herramientas numéricas que le permitan evaluar con objetividad los proyectos y proponer estrategias rentables.\\n\\n4) Una visión diferente, moderna y muy práctica del potencial que tienen las áreas de apoyo a la mercadotecnia y ventas así como la manera de obtener mayor provecho de ellas.\\n\\n5) Una visión estratégica del mercado farmacéutico, de los principales segmentos y nichos, para la elaboración del plan estratégico de mercadotecnia.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",
+      "updated_at": "2020-05-13T22:39:35.610-03:00",
+      "competences": [
+        {
+          "id": 299,
+          "name": "Empreendedorismo",
+          "icon_url": "https://bloxproduction.s3.sa-east-1.amazonaws.com/store/4c67fabb7ce74d78fde67262b5b4bca7?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI2TX23I53JQA7CNA%2F20200721%2Fsa-east-1%2Fs3%2Faws4_request&X-Amz-Date=20200721T163715Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=027a1757b5859ff357f1352162eff55be324dc8c11b98a050eabc8e2da8255cf",
+          "description": "Empreendedorismo é o processo de iniciativa de implementar novos negócios ou mudanças em empresas já existentes. É um termo muito usado no âmbito empresarial e muitas vezes está relacionado com a criação de empresas ou produtos novos, normalmente envolvendo inovações e riscos."
+        },
+        {
+          "id": 302,
+          "name": "Criatividade",
+          "icon_url": "https://bloxproduction.s3.sa-east-1.amazonaws.com/store/57b6ef54670fc7fad95258a30fd1ea75?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI2TX23I53JQA7CNA%2F20200721%2Fsa-east-1%2Fs3%2Faws4_request&X-Amz-Date=20200721T163715Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=c1958052b9455f427f20aedb7fd361a9ba6e2ada4b3a2180005c3322d875d475",
+          "description": "Criatividade é o substantivo feminino com origem no latim creare, que indica a capacidade de criar, produzir ou inventar coisas novas."
+        },
+        {
+          "id": 298,
+          "name": "Autoconhecimento",
+          "icon_url": "https://bloxproduction.s3.sa-east-1.amazonaws.com/store/081c2e871011b71cb313a3492832a16b?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI2TX23I53JQA7CNA%2F20200721%2Fsa-east-1%2Fs3%2Faws4_request&X-Amz-Date=20200721T163715Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=53ea9978d92a8cbd748a0c72dbefc431763d87beb60a323b45eaa0b2365aa9ae",
+          "description": "Uma pessoa consciente de si mesma e de seus pensamentos, consegue identificar suas forças e fraquezas e trabalhar com foco para se desenvolver constantemente. Por isso, na maioria das vezes, buscar o autoconhecimento é o primeiro passo para ter uma vida profissional mais bem sucedida e saudável."
+        }
+      ],
+      "external_id": "547",
+      "modality_id": 57,
+      "responsible": {
+        "id": 24145,
+        "name": "Juan Martín Maldacena",
+        "email": "",
+        "shortbio": null,
+        "username": "professor",
+        "picture_url": null
+      },
+      "blox_classes": [
+        {
+          "id": 28083,
+          "order": 1,
+          "blox_id": 5234,
+          "context": "Propedéutica y diagnosis de la mercadotecnia farmacéutica\n( 20 horas)",
+          "question": "Propedéutica y diagnosis de la mercadotecnia farmacéutica ( 20 horas)",
+          "methodology": {
+            "id": 118,
+            "name": "Aprendizagem Colaborativa",
+            "icon_data": null,
+            "created_at": "2019-12-17T20:44:35.914-02:00",
+            "updated_at": "2020-05-13T23:15:02.044-03:00",
+            "external_data": {},
+            "material_icon": "group",
+            "institution_id": 22
+          },
+          "preparation": "",
+          "extra_fields": [],
+          "methodology_id": 118,
+          "blox_class_attachments_attributes": []
+        },
+        {
+          "id": 28084,
+          "order": 2,
+          "blox_id": 5234,
+          "context": "Inteligencia comercial en la industria farmacéutica\n( 20 horas)",
+          "question": "Inteligencia comercial en la industria farmacéutica ( 20 horas)",
+          "methodology": {
+            "id": 119,
+            "name": "Estudos de Caso",
+            "icon_data": null,
+            "created_at": "2019-12-17T20:45:15.056-02:00",
+            "updated_at": "2020-05-13T23:15:28.713-03:00",
+            "external_data": {},
+            "material_icon": "chrome_reader_mode",
+            "institution_id": 22
+          },
+          "preparation": "",
+          "extra_fields": [],
+          "methodology_id": 119,
+          "blox_class_attachments_attributes": []
+        },
+        {
+          "id": 28085,
+          "order": 3,
+          "blox_id": 5234,
+          "context": "Efectividad de fuerza de ventas (SFE)\n( 10 horas)",
+          "question": "Efectividad de fuerza de ventas (SFE) ( 10 horas)",
+          "methodology": {
+            "id": 119,
+            "name": "Estudos de Caso",
+            "icon_data": null,
+            "created_at": "2019-12-17T20:45:15.056-02:00",
+            "updated_at": "2020-05-13T23:15:28.713-03:00",
+            "external_data": {},
+            "material_icon": "chrome_reader_mode",
+            "institution_id": 22
+          },
+          "preparation": "",
+          "extra_fields": [],
+          "methodology_id": 119,
+          "blox_class_attachments_attributes": []
+        },
+        {
+          "id": 28086,
+          "order": 4,
+          "blox_id": 5234,
+          "context": "Construcción de marca en la mercadotecnia farmacéutica y marketing digital\n( 20 horas)",
+          "question": "Construcción de marca en la mercadotecnia farmacéutica y marketing digital ( 20 horas)",
+          "methodology": {
+            "id": 121,
+            "name": "Aprendizagem Baseada em Problemas (PBL)",
+            "icon_data": null,
+            "created_at": "2019-12-17T20:47:15.223-02:00",
+            "updated_at": "2020-05-13T23:14:51.406-03:00",
+            "external_data": {},
+            "material_icon": "compare_arrows",
+            "institution_id": 22
+          },
+          "preparation": "",
+          "extra_fields": [],
+          "methodology_id": 121,
+          "blox_class_attachments_attributes": []
+        }
+      ],
+      "blox_profile": {
+        "id": 81,
+        "name": "Básico",
+        "icon_url": "https://bloxproduction.s3.sa-east-1.amazonaws.com/store/865c60909675e697a5ad09c0b35ad612?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI2TX23I53JQA7CNA%2F20200721%2Fsa-east-1%2Fs3%2Faws4_request&X-Amz-Date=20200721T163715Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=9275fdbe31e5ce591ed75bd2dc94b77af1beeaa1bdbd47cbab32ce16b16de299",
+        "description": "Básico",
+        "icon_dark_url": "https://bloxproduction.s3.sa-east-1.amazonaws.com/store/3971072866bd75d316c29d27feb66de1?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAI2TX23I53JQA7CNA%2F20200721%2Fsa-east-1%2Fs3%2Faws4_request&X-Amz-Date=20200721T163715Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=1fd80e56399e1d03f11e62452ddcebf41dc14ddf7577248804b9da77a59e62f9",
+        "material_icon": null
+      },
+      "extra_fields": [],
+      "blox_template": null,
+      "knowledge_area": {
+        "id": 123,
+        "name": "Complementar",
+        "color1": "#55be54",
+        "color2": "#44b34f",
+        "color3": "#349b4a",
+        "color4": "#44b34f",
+        "icon_url": null,
+        "description": "Em teoria dos conjuntos, o complementar de um subconjunto se refere a elementos que não estão no conjunto. Normalmente, o complementar se trata de maneira relativa à um conjunto universo, sendo o conjunto o complementar de formado pelos elementos de que não pertencem"
+      },
+      "functional_area": {
+        "id": 453,
+        "icon": null,
+        "name": "Bem Estar e Saúde",
+        "description": "Segundo a Organização Mundial de Saúde (OMS), saúde pode ser definida como “um estado de completo bem-estar físico, mental e social, e não apenas a ausência de doença ou enfermidades”.",
+        "icon_dark_url": "https://bloxproduction.s3.sa-east-1.amazonaws.com/store/92f42cd2a7ec815b25c3aa060f19c060?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARWJ2S7DWNZP5A6X5%2F20220917%2Fsa-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220917T220517Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=0f07fe19838059a57b071f4f82bfd90bf5d8665d0fd593b8f6dc9a4ff2a7bd0a",
+        "icon_white_url": "https://bloxproduction.s3.sa-east-1.amazonaws.com/store/33e1b22187e0f745e6ae01ef877bfb17?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARWJ2S7DWNZP5A6X5%2F20220917%2Fsa-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220917T220517Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=9560fcbf5fae0c55b951208eb61a394ce28c6acba63bce1d93e5abe42c5d8d3d"
+      },
+      "blox_attachments": [
+        {
+          "id": 15039,
+          "kind": "basic",
+          "name": "Construcción de marca en la mercadotecnia farmacéutica y marketing digital\n( 20 horas)",
+          "media": "Libros",
+          "file_url": null,
+          "description": "Construcción de marca en la mercadotecnia farmacéutica y marketing digital\n( 20 horas)",
+          "extra_fields": []
+        },
+        {
+          "id": 15040,
+          "kind": "complementary",
+          "name": "Construcción de marca en la mercadotecnia farmacéutica y marketing digital\n( 20 horas)",
+          "media": "Sitio Web",
+          "file_url": null,
+          "description": "Construcción de marca en la mercadotecnia farmacéutica y marketing digital\n( 20 horas)",
+          "extra_fields": []
+        }
+      ],
+      "blox_evaluations": [],
+      "allow_ead_content": false,
+      "bibliography_basic": [
+        {
+          "id": 15039,
+          "kind": "basic",
+          "name": "Construcción de marca en la mercadotecnia farmacéutica y marketing digital\n( 20 horas)",
+          "media": "Libros",
+          "blox_id": 5234,
+          "file_data": null,
+          "created_at": "2019-12-17T22:06:27.560-02:00",
+          "updated_at": "2019-12-17T22:06:27.560-02:00",
+          "description": "Construcción de marca en la mercadotecnia farmacéutica y marketing digital\n( 20 horas)",
+          "extra_fields": [],
+          "bibliography_type_id": 54
+        }
+      ],
+      "pedagogic_resources": null,
+      "bibliography_complementary": [
+        {
+          "id": 15040,
+          "kind": "complementary",
+          "name": "Construcción de marca en la mercadotecnia farmacéutica y marketing digital\n( 20 horas)",
+          "media": "Sitio Web",
+          "blox_id": 5234,
+          "file_data": null,
+          "created_at": "2019-12-17T22:06:27.568-02:00",
+          "updated_at": "2019-12-17T22:06:27.568-02:00",
+          "description": "Construcción de marca en la mercadotecnia farmacéutica y marketing digital\n( 20 horas)",
+          "extra_fields": [],
+          "bibliography_type_id": 55
+        }
+      ]
+    }
+  }
+]
