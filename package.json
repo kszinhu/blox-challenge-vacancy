@@ -55,6 +55,10 @@
     "setupFilesAfterEnv": [
       "<rootDir>/jest-setup.ts"
     ],
+    "testPathIgnorePatterns": [
+      "__mocks__/.*",
+      "<rootDir>/node_modules/"
+    ],
     "collectCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx}",
