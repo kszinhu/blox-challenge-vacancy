@@ -52,17 +52,17 @@ export default function SignUp() {
     if (state.error) {
       enqueueSnackbar("Erro ao realizar cadastro!", {
         variant: "error",
-        autoHideDuration: 2000,
+        autoHideDuration: 1500,
       });
     } else {
       enqueueSnackbar("Cadastro realizado com sucesso!", {
         variant: "success",
-        autoHideDuration: 2000,
+        autoHideDuration: 1500,
       });
 
       setTimeout(() => {
         navigate("/sign-in");
-      }, 1500);
+      }, 750);
     }
   };
 
