@@ -31,20 +31,20 @@ export function PaginationReducer(
         ...state,
         status: "fetched",
         data: action.payload,
-      };
+      } as PaginationState;
 
     case "CHANGE_OPTIONS":
       return {
         ...state,
         status: "fetching",
         paginationOptions: action.payload,
-      };
+      } as PaginationState;
 
     case "ERROR":
       return {
         ...state,
         status: "error",
         error: action.payload,
-      };
+      } as PaginationState;
   }
 }

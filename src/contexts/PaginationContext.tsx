@@ -16,7 +16,7 @@ const PaginationContext = createContext<
 const usePagination = () => useContext(PaginationContext);
 
 function PaginationProvider({ children }: PaginationProviderProps) {
-  const [state, dispatch] = useReducer(PaginationReducer, initialState);
+  const [state, dispatch] = useReducer(PaginationReducer, initialState!);
 
   const value = useMemo(() => ({ state, dispatch }), [state]);
 
