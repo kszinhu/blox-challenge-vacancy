@@ -1,5 +1,7 @@
 # Blox Front-End Developer Test
 
+[![Deploy CI](https://github.com/kszinhu/blox-challenge-vacancy/actions/workflows/deploy.yml/badge.svg)](https://github.com/kszinhu/blox-challenge-vacancy/actions/workflows/deploy.yml)
+
 ## Visão Geral
 
 Este repositório é destinado ao desafio técnico para a vaga de **Front-End Developer na Blox**.
