@@ -31,7 +31,10 @@ git clone https://github.com/kszinhu/blox-challenge-vacancy.git
 npm ci
 ```
 
-3. Inicie o servidor de desenvolvimento
+3. Crie e preencha o arquivo `.env` com as variáveis de ambiente seguindo o arquivo `.env.example`
+   - Observe que é o endereço(entrypoint) da API que deve ser preenchido, e não o endereço do projeto.
+
+4. Inicie o servidor de desenvolvimento
 
 ```bash
 npm run dev

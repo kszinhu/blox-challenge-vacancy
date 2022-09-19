@@ -15,7 +15,7 @@ interface CurricularUnitOptions {
 }
 
 export class APIService {
-  static #baseUrl: string = import.meta.env.VITE_AUTH_API_URL;
+  static #baseUrl: string = import.meta.env.VITE_ENTRYPOINT_API_URL;
 
   static async register(data: RegisterFormData): Promise<RegisterResponse> {
     const response = await fetch(`${this.#baseUrl}${endpoints.register}`, {
