@@ -13,6 +13,16 @@ import { Register, Login } from "../..";
 
 global.React = React;
 
+const mockEnqueue = jest.fn();
+jest.mock("notistack", () => ({
+  ...jest.requireActual("notistack"),
+  useSnackbar: () => {
+    return {
+      enqueueSnackbar: mockEnqueue,
+    };
+  },
+}));
+
 describe("<Register />", () => {
   beforeEach(() => {
     render(
@@ -101,12 +111,31 @@ describe("<Register />", () => {
       });
 
       it("should show snackbar success message", () => {
-        // await request to api and show snackbar
-        setTimeout(() => {
-          expect(
-            screen.getByText(/Cadastro realizado com sucesso!/i)
-          ).toBeInTheDocument();
-        }, 1000);
+        expect(mockEnqueue).toHaveBeenCalledWith(
+          "Cadastro realizado com sucesso!",
+          {
+            variant: "success",
+            autoHideDuration: 1500,
+          }
+        );
+      });
+    });
+
+    describe("when the request is failed", () => {
+      beforeAll(async () => {
+        jest.clearAllMocks();
+        global.fetch = jest.fn(() =>
+          Promise.resolve({
+            json: () => Promise.resolve(registerFailed),
+          })
+        ) as jest.Mock;
+      });
+
+      it("should show snackbar success message", () => {
+        expect(mockEnqueue).toHaveBeenCalledWith("Erro ao realizar cadastro!", {
+          variant: "error",
+          autoHideDuration: 1500,
+        });
       });
     });
 
