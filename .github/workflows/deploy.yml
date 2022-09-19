@@ -4,14 +4,16 @@
 name: "Deploy CI"
 
 on:
+ workflow_dispatch:
+ pull_request:
+    types:
+      - closed
  release:
    types:
      - published
  push:
    branches:
      - main
-  
- workflow_dispatch:
  
 jobs:
   test:
