@@ -47,9 +47,10 @@ export default function SignUp() {
       mode: "onChange",
     });
 
-  const onSubmit: SubmitHandler<RegisterFormData> = (values) => {
-    signUp(dispatch, values);
-    if (state.error) {
+  const onSubmit: SubmitHandler<RegisterFormData> = async (values) => {
+    const isRegistered = await signUp(dispatch, values);
+
+    if (!isRegistered) {
       enqueueSnackbar("Erro ao realizar cadastro!", {
         variant: "error",
         autoHideDuration: 1500,

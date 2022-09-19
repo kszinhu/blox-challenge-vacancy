@@ -65,17 +65,23 @@ async function signUp(dispatch: Dispatch<AuthActions>, data: RegisterFormData) {
         type: "REGISTER_SUCCESS",
         payload: response.data,
       });
+
+      return true;
     } else {
       dispatch({
         type: "ERROR",
         payload: response.data,
       });
+
+      return false;
     }
   } catch (error) {
     dispatch({
       type: "ERROR",
       payload: error,
     });
+
+    return false;
   }
 }
 
