@@ -5,12 +5,12 @@ name: "Deploy CI"
 
 on:
  workflow_dispatch:
+ push:
+   branches:
+     - master
  pull_request:
     types:
       - closed
- release:
-   types:
-     - published
  push:
    branches:
      - main
