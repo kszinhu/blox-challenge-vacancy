@@ -7,7 +7,7 @@ import { AuthProvider } from "../../contexts/AuthContext";
 global.React = React;
 
 describe("<PrivateRoutes />", () => {
-  describe("when the user is authenticated", () => {
+  describe("when the user is not logged in", () => {
     it("should render the fallback route", () => {
       const FakeComponent = () => <div>fake component</div>;
       const Login = () => <div>Sign In</div>;
