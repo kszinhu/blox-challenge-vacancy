@@ -141,8 +141,9 @@ export default function SignUp() {
                     }}
                     renderInput={(params: any) => (
                       <TextField
+                        {...params}
                         margin='dense'
-                        id='birthDate'
+                        id='birth_date'
                         required
                         fullWidth
                         variant='outlined'
@@ -151,7 +152,6 @@ export default function SignUp() {
                         helperText={
                           errors.birth_date?.message && "Data Inválida"
                         }
-                        {...params}
                       />
                     )}
                   />
